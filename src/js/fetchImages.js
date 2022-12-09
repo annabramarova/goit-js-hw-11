@@ -1,9 +1,9 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
+const KEY = '31931672-bd2c71509f90e4d9af4570b10';
 const IMG_PER_PAGE = 40;
 
 export default class Pixabay {
-    static #KEY = '31931672-bd2c71509f90e4d9af4570b10';
 
     constructor() {
         this.currentPage = 1;
@@ -38,7 +38,7 @@ export default class Pixabay {
 
     async fetchImages() {
     return await axios.get(
-            `?key=${Pixabay.#KEY}&q=${
+            `?key=${KEY}&q=${
             this.currentQuery
             }&image_type=photo&orientation=horizontal&safesearch=true&page=${
             this.currentPage
