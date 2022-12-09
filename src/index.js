@@ -9,7 +9,6 @@ import Notiflix from 'notiflix';
 const refs = {
     searchForm: document.querySelector('.search-form'),
     gallery: document.querySelector('.gallery'),
-    // loadMoreBtn: document.querySelector('.load-more'),
     end: document.querySelector('.end-line'),
 };
 
@@ -38,6 +37,7 @@ function onSearchClick(e) {
         drawGallery(response.data);
         pageInfoHandler(response.data);
     });
+    e.currentTarget.reset();
 };
 
 const pageInfoHandler = allCards => {
