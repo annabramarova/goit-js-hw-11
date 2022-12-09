@@ -69,6 +69,7 @@ body {
 
 .photo {
     display: block;
+    object-fit: cover;
     width: 350px;
     height: 250px;
 }
@@ -106,4 +107,8 @@ border: none;
     color: transparent;
     background-color: transparent;
     height: 2px;
+}
+
+.hidden {
+    display: none;
 }

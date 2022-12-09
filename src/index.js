@@ -43,34 +43,34 @@ function onSearchClick(e) {
 const pageInfoHandler = allCards => {
     const { totalHits } = allCards;
 
-    if (galleryFetcher.totalPages <= 1) {
-        hideEndLine();
-    }
+   if (galleryFetcher.totalPages <= 1) {
+    hideEndLine();
+  }
 
-    if (galleryFetcher.totalPages > 1) {
-        showEndLine();
-    }
+  if (galleryFetcher.totalPages > 1) {
+    showEndLine();
+  }
 
-    if (
-        galleryFetcher.page === galleryFetcher.totalPages &&
-        galleryFetcher.totalPages != 1
-    ) {
-        Notiflix.Notify.info(
-        `We're sorry, but you've reached the end of search results.`
-        );
-        hideEndLine();
-    }
+  if (
+    galleryFetcher.page === galleryFetcher.totalPages &&
+    galleryFetcher.totalPages !== 1
+  ) {
+    Notiflix.Notify.info(
+      `We're sorry, but you've reached the end of search results.`
+    );
+    hideEndLine();
+  }
 
-    if (galleryFetcher.page === 1 && totalHits != 0) {
-        Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
-    }
+  if (galleryFetcher.page === 1 && totalHits !== 0) {
+    Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+  }
 
-    if (totalHits === 0) {
-        Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-        );
-        return;
-    }
+  if (totalHits === 0) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
+    return;
+  }
 };
 
 function drawGallery (images) {
@@ -135,7 +135,10 @@ const handleIntersect = e => {
     pageInfoHandler(r.data);
 
     smoothScroll();
-    }).catch(() => []);
+    })
+        .catch(error => {
+                console.error(error);
+            })
   }
 };
 
@@ -150,4 +153,3 @@ observer.observe(refs.end);
 function cleanGallery() {
   refs.gallery.innerHTML = '';
 }
-

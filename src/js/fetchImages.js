@@ -12,7 +12,7 @@ export default class Pixabay {
     }
 
     get page() {
-    return this.currentPage;
+        return this.currentPage;
     }
 
     set page(newPage) {
@@ -27,21 +27,19 @@ export default class Pixabay {
         return (this.totalAmountOfPages = newTotalPages);
     }
 
-    calculateTotalPagesAmount (allCards){
-    this.totalAmountOfPages = Math.ceil(allCards / IMG_PER_PAGE);
+    calculateTotalPagesAmount(allCards) {
+        this.totalAmountOfPages = Math.ceil(allCards / IMG_PER_PAGE);
     }
 
     resetPages() {
-    this.currentPage = 1;
-    this.totalAmountOfPages = '';
+        this.currentPage = 1;
+        this.totalAmountOfPages = '';
     }
 
     async fetchImages() {
-    return await axios.get(
-            `?key=${KEY}&q=${
-            this.currentQuery
-            }&image_type=photo&orientation=horizontal&safesearch=true&page=${
-            this.currentPage
-            }&per_page=${IMG_PER_PAGE}`)
+        return await axios.get(
+            `?key=${KEY}&q=${this.currentQuery
+            }&image_type=photo&orientation=horizontal&safesearch=true&page=${this.currentPage
+            }&per_page=${IMG_PER_PAGE}`);
     }
 }
