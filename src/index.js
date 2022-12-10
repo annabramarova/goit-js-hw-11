@@ -34,7 +34,7 @@ function onSearchClick(e) {
 
     galleryFetcher.fetchImages().then(response => {
         galleryFetcher.calculateTotalPagesAmount(response.data.totalHits);
-        drawGallery(response.data);
+        renderGallery(response.data);
         pageInfoHandler(response.data);
     });
     e.currentTarget.reset();
