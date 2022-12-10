@@ -73,7 +73,7 @@ const pageInfoHandler = allCards => {
   }
 };
 
-function drawGallery (images) {
+function renderGallery (images) {
     const markup = images.hits.map(
         ({ webformatURL, likes, views, comments, tags, downloads, largeImageURL }) => `
     <div class="photo-card">
@@ -131,7 +131,7 @@ const handleIntersect = e => {
 
     galleryFetcher.fetchImages()
     .then(r => {
-    drawGallery(r.data);
+    renderGallery(r.data);
     pageInfoHandler(r.data);
 
     smoothScroll();
